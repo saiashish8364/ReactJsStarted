@@ -1,16 +1,17 @@
 import "./expenseitem.css";
 import ExpenseDetails from "./ExpenseDetails";
 import ExpenseDate from "./ExpenseDate";
+import Card from "../UI/card";
 function Expenseitem(props) {
   return (
-    <div className="expense-item">
+    <Card className="expense-item">
       <ExpenseDate date={props.date}></ExpenseDate>
       <ExpenseDetails
         amount={props.amount}
         location={props.location}
         title={props.title}
       ></ExpenseDetails>
-    </div>
+    </Card>
   );
 }
 export default Expenseitem;

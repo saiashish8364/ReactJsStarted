@@ -1,6 +1,7 @@
-import "./App.css";
-import Expenseitem from "./components/expenseitems";
-
+import Expenseitem from "./components/Expenses/expenseitems";
+import "./components/Expenses/expenses.css";
+import React from "react";
+//import Card from "./components/card";
 function App() {
   const expenses = [
     {
@@ -33,7 +34,7 @@ function App() {
     },
   ];
   return (
-    <div>
+    <div className="expenses">
       {expenses.map((item) => (
         <Expenseitem
           title={item.title}
