@@ -12,13 +12,6 @@ function ExpenseItem(props) {
         location={props.location}
         amount={props.amount}
       ></ExpenseDetails>
-      <button
-        onClick={() => {
-          console.log("Delete Button Clicked");
-        }}
-      >
-        Delete Expense
-      </button>
     </Card>
   );
 }
