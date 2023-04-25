@@ -1,7 +1,5 @@
-import Expenseitem from "./components/Expenses/expenseitems";
-import "./components/Expenses/expenses.css";
+import Expenses from "./components/Expenses/Expenses";
 import React from "react";
-//import Card from "./components/card";
 function App() {
   const expenses = [
     {
@@ -9,40 +7,40 @@ function App() {
       title: "Toilet Paper",
       amount: 94.12,
       date: new Date(2020, 7, 14),
-      location: "mart",
+      location: "Hyderabad",
     },
     {
       id: "e2",
       title: "New TV",
       amount: 799.49,
       date: new Date(2021, 2, 12),
-      location: "store",
+      location: "Mumbai",
     },
     {
       id: "e3",
       title: "Car Insurance",
       amount: 294.67,
       date: new Date(2021, 2, 28),
-      location: "online",
+      location: "Chennai",
     },
     {
       id: "e4",
       title: "New Desk (Wooden)",
       amount: 450,
       date: new Date(2021, 5, 12),
-      location: "furniture shop",
+      location: "Pune",
     },
   ];
+  // return React.createElement(
+  //   "div",
+  //   {},
+  //   React.createElement("h2", {}, "Let's get started"),
+  //   React.createElement(Expenses, { items: expenses })
+  // );
   return (
-    <div className="expenses">
-      {expenses.map((item) => (
-        <Expenseitem
-          title={item.title}
-          amount={item.amount}
-          date={item.date}
-          location={item.location}
-        ></Expenseitem>
-      ))}
+    <div>
+      <h2>Let's get started!</h2>
+      <Expenses items={expenses}></Expenses>
     </div>
   );
 }
