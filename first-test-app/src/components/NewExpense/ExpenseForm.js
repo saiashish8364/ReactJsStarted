@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
+  const [enteredLoction, setEnteredLocation] = useState("");
   // const [userInput, setUserInput] = useState({
   //   enteredTitle: "",
   //   enteredAmount: "",
@@ -27,21 +28,32 @@ const ExpenseForm = () => {
     //   return { ...preState, enteredDate: event.target.value };
     // });
   };
+  const callLoction = (event) => {
+    setEnteredLocation(event.target.value);
+    // setUserInput((preState) => {
+    //   return { ...preState, enterdLocation: event.target.value };
+    // });
+  };
   const submitHandler = (event) => {
     event.preventDefault();
     const expenseData = {
       title: enteredTitle,
       amount: enteredAmount,
+      location: enteredLoction,
       date: new Date(enteredDate),
     };
-    console.log(expenseData);
+    props.onSaveExpenseData(expenseData);
+    setEnteredTitle("");
+    setEnteredAmount("");
+    setEnteredDate("");
+    setEnteredLocation("");
   };
   return (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" onChange={callTitle}></input>
+          <input type="text" onChange={callTitle} value={enteredTitle}></input>
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
@@ -50,15 +62,26 @@ const ExpenseForm = () => {
             min="0.01"
             step="0.01"
             onChange={callAmount}
+            value={enteredAmount}
           ></input>
         </div>
+        <div className="new-expense__control">
+          <label>Location</label>
+          <input
+            type="text"
+            onChange={callLoction}
+            value={enteredLoction}
+          ></input>
+        </div>
+
         <div className="new-expense__control">
           <label>Date</label>
           <input
             type="date"
             min="2019-01-01"
-            max="2022-12-31"
+            max="2023-12-31"
             onChange={callDate}
+            value={enteredDate}
           ></input>
         </div>
       </div>
