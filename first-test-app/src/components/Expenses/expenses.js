@@ -16,7 +16,7 @@ function Expenses(props) {
       ></ExpenseFilter>
       {props.items.map((item) => (
         <ExpenseItem
-          id={item.id}
+          key={item.id}
           title={item.title}
           amount={item.amount}
           date={item.date}
