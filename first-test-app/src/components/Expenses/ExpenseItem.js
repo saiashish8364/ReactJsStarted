@@ -5,14 +5,16 @@ import Card from "../UI/Card";
 
 function ExpenseItem(props) {
   return (
-    <Card className="expense-item" id={props.id}>
-      <ExpenseDate date={props.date}></ExpenseDate>
-      <ExpenseDetails
-        title={props.title}
-        location={props.location}
-        amount={props.amount}
-      ></ExpenseDetails>
-    </Card>
+    <li>
+      <Card className="expense-item" id={props.id}>
+        <ExpenseDate date={props.date}></ExpenseDate>
+        <ExpenseDetails
+          title={props.title}
+          location={props.location}
+          amount={props.amount}
+        ></ExpenseDetails>
+      </Card>
+    </li>
   );
 }
 export default ExpenseItem;

@@ -1,41 +1,24 @@
 import "./Expenses.css";
-import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
 import ExpenseFilter from "./ExpenseFilter";
 import { useState } from "react";
+import ExpensesList from "./ExpensesList";
 function Expenses(props) {
-  const [filetredYear, setFilterYear] = useState("2020");
+  const [filetredYear, setFilterYear] = useState("2023");
   const filterChangeHandler = (selectedYear) => {
     setFilterYear(selectedYear);
   };
   const filteredExpenses = props.items.filter((exp) => {
     return exp.date.getFullYear().toString() === filetredYear;
   });
-  let expensesContent = <p>No Expenses Found</p>;
-  let expensesContent1 = <p>Only single Expense here. Please add more...</p>;
-  let prt = "";
-  if (filteredExpenses.length > 0) {
-    expensesContent = filteredExpenses.map((item) => (
-      <ExpenseItem
-        key={item.id}
-        title={item.title}
-        amount={item.amount}
-        date={item.date}
-        location={item.location}
-      ></ExpenseItem>
-    ));
-  }
-  if (filteredExpenses.length === 1) {
-    prt = expensesContent1;
-  }
+
   return (
     <Card className="expenses">
       <ExpenseFilter
         selected={filetredYear}
         onChangeFilter={filterChangeHandler}
       ></ExpenseFilter>
-      {expensesContent}
-      {prt}
+      <ExpensesList items={filteredExpenses}></ExpensesList>
       {/* <ExpenseItem
         id={props.items[0].id}
         title={props.items[0].title}
